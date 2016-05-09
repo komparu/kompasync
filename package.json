@@ -1,0 +1,23 @@
+{
+  "name": "kompasync",
+  "version": "0.0.1",
+  "description": "Subproject to send resource requests asynchronously and give merged result back.",
+  "main": "app.js",
+  "dependencies": {
+    "koa": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komparu/kompasync.git"
+  },
+  "author": "Konstantin Bodnia, Roeland Werring",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/komparu/kompasync/issues"
+  },
+  "homepage": "https://github.com/komparu/kompasync#readme"
+}
