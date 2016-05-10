@@ -1,8 +1,19 @@
-var koa = require('koa');
-var app = koa();
+"use strict";
 
-app.use(function *(){
-  this.body = 'Y helo thar!';
-});
+var koa = require('koa')();
+var router = require('koa-router');
+var mount = require('koa-mount');
+var winston = require('winston');
+var jsonBody = require('koa-json-body');
+var api = require('./api.js');
 
-app.listen(1337);
+var apiv1 = new router()
+  .get('/', function*() {
+    this.body = 'wheee';
+  })
+  .post('/all', jsonBody(), api.all)
+  .post('/merge', jsonBody(), api.all, api.merge);
+
+koa
+  .use(mount('/v1', apiv1.middleware()))
+  .listen(1338);
