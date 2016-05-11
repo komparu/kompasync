@@ -15,20 +15,16 @@ exports.merge = function*(next) {
   }
 
   this.body = this.body.reduce((carry, response) => {
-    for (var x in response) {
-      if (!response.hasOwnProperty(x)) {
-        continue;
-      }
+    Object.keys(response).map(x => {
       if (Array.isArray(response[x])) {
-        if (!carry.hasOwnProperty(x)) {
+        if (!carry.hasOwnProperty(x))
           carry[x] = response[x];
-        } else if (!Array.isArray(carry[x])) {
+        else if (!Array.isArray(carry[x]))
           throw new Error('Carry property “' + x + '” is not an array');
-        } else {
+        else
           carry[x] = carry[x].concat(response[x]);
-        }
       }
-    }
+    });
     return carry;
   }, {});
 
