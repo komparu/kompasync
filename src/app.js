@@ -5,6 +5,8 @@ var router = require('koa-router');
 var mount = require('koa-mount');
 var logger = require('koa-logger');
 var jsonBody = require('koa-json-body');
+var config = require('config');
+
 var api = require('./api.js');
 
 var apiv1 = new router()
@@ -23,4 +25,4 @@ koa
     this.body = 'whoops';
   })
   .use(mount('/v1', apiv1.middleware()))
-  .listen(1338);
+  .listen(config.get('port'));
